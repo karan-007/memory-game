@@ -1,10 +1,10 @@
-#game div {
-  border: 1px solid black;
-  width: 20%;
-  height: 80px;
-  margin: 10px;
-  display: inline-block;
-}
+/* #game div { */
+/* border: 1px solid black; */
+/* width: 20%; */
+/* height: 80px; */
+/* margin: 10px; */
+/* display: inline-block; */
+/* } */
 body {
   margin: 0;
   padding: 0;
@@ -34,12 +34,15 @@ form {
 }
 
 .qwe {
-  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  align-items: center;
   background-color: bisque;
 }
 
 #game {
-  width: 100%;
+  max-width: 70%;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
   background-color: blue;
@@ -47,13 +50,39 @@ form {
 }
 .tile {
   display: flex;
-  align-items: center;
-  width: 25%;
-  height: 10em;
+  /* align-items: center; */
+  /* justify-content: center; */
   background-color: coral;
-  background-color: transparent;
+  margin: 8px;
+  display: inline-block;
+  /* background-color: transparent; */
   border: 1px solid #f1f1f1;
   perspective: 1000px;
+}
+.tile24 {
+  width: 20%;
+  max-height: 14%;
+}
+.tile8 {
+  width: 45%;
+  max-height: 20%;
+}
+.tile12 {
+  width: 30%;
+  max-height: 20%;
+}
+.tile16 {
+  width: 20%;
+  max-height: 20%;
+}
+.img {
+  width: 100%;
+  height: 100%;
+}
+.img24 {
+  width: 70%;
+  height: 100%;
+  margin-left: 15%;
 }
 .flip-card-inner {
   position: relative;

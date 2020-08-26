@@ -1,10 +1,7 @@
-
-
 function myFunction() {
   const gameContainer = document.getElementById("game");
   const name = document.getElementById("name").value;
   const level = document.getElementById("select").value;
-  console.log(name, level);
 
   const COLORS = [
     "./gifs/1.gif",
@@ -18,7 +15,7 @@ function myFunction() {
     "./gifs/9.gif",
     "./gifs/10.gif",
     "./gifs/11.gif",
-    "./gifs/12.gif",
+    "./gifs/12.gif"
   ];
 
   // here is a helper function to shuffle an array
@@ -54,16 +51,32 @@ function myFunction() {
 
 
   function createDivsForColors(colorArray, level) {
+    if (level === "24") {
+      tileClassName = "tile24";
+      imgClassName = "img24";
+    } else if (level === "8") {
+      tileClassName = "tile8";
+      imgClassName = "img";
+    } else if (level === "12") {
+      tileClassName = "tile12";
+      imgClassName = "img";
+    } else {
+      tileClassName = "tile16";
+      imgClassName = "img";
+    }
     for (let i = 0; i < level; i++) {
       // create a new div
       console.log(i)
       const newDiv = document.createElement("div");
+
       var x = document.createElement("IMG");
       x.setAttribute("src", colorArray[i]);
-      x.setAttribute("width", "70%");
-      x.setAttribute("height", "100%");
-      x.setAttribute("alt", "img1");
+      x.classList.add(imgClassName)
+      // x.setAttribute("width", "70%");
+      // x.setAttribute("height", "100%");
       newDiv.append(x);
+      newDiv.classList.add("tile")
+      newDiv.classList.add(tileClassName)
       // give it a class attribute for the value we are looping over
       //newDiv.classList.add(color);
 
@@ -84,6 +97,4 @@ function myFunction() {
 
   // when the DOM loads
   createDivsForColors(shuffledColors, level);
-
 }
-
