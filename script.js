@@ -1,20 +1,24 @@
 
-console.log("sffdgsh")
+
 function myFunction() {
-  console.log("ssds")
   const gameContainer = document.getElementById("game");
+  const name = document.getElementById("name").value;
+  const level = document.getElementById("select").value;
+  console.log(name, level);
 
   const COLORS = [
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple",
-    "red",
-    "blue",
-    "green",
-    "orange",
-    "purple"
+    "./gifs/1.gif",
+    "./gifs/2.gif",
+    "./gifs/3.gif",
+    "./gifs/4.gif",
+    "./gifs/5.gif",
+    "./gifs/6.gif",
+    "./gifs/7.gif",
+    "./gifs/8.gif",
+    "./gifs/9.gif",
+    "./gifs/10.gif",
+    "./gifs/11.gif",
+    "./gifs/12.gif",
   ];
 
   // here is a helper function to shuffle an array
@@ -40,18 +44,28 @@ function myFunction() {
     return array;
   }
 
-  let shuffledColors = shuffle(COLORS);
+  let newColors = [];
+  for (let i = 0; i < level / 2; i++) {
+    newColors.push(COLORS[i]);
+    newColors.push(COLORS[i]);
+  }
+  let shuffledColors = shuffle(newColors);
 
-  // this function loops over the array of colors
-  // it creates a new div and gives it a class with the value of the color
-  // it also adds an event listener for a click for each card
-  function createDivsForColors(colorArray) {
-    for (let color of colorArray) {
+
+
+  function createDivsForColors(colorArray, level) {
+    for (let i = 0; i < level; i++) {
       // create a new div
+      console.log(i)
       const newDiv = document.createElement("div");
-
+      var x = document.createElement("IMG");
+      x.setAttribute("src", colorArray[i]);
+      x.setAttribute("width", "70%");
+      x.setAttribute("height", "100%");
+      x.setAttribute("alt", "img1");
+      newDiv.append(x);
       // give it a class attribute for the value we are looping over
-      newDiv.classList.add(color);
+      //newDiv.classList.add(color);
 
       // call a function handleCardClick when a div is clicked on
       newDiv.addEventListener("click", handleCardClick);
@@ -61,6 +75,7 @@ function myFunction() {
     }
   }
 
+
   // TODO: Implement this function!
   function handleCardClick(event) {
     // you can use event.target to see which element was clicked
@@ -68,7 +83,7 @@ function myFunction() {
   }
 
   // when the DOM loads
-  createDivsForColors(shuffledColors);
+  createDivsForColors(shuffledColors, level);
 
 }
 
