@@ -54,33 +54,39 @@ function myFunction() {
     if (level === "24") {
       tileClassName = "tile24";
       imgClassName = "img24";
+      textClassName = "card-text-24"
     } else if (level === "8") {
       tileClassName = "tile8";
       imgClassName = "img";
+      textClassName = "card-text-8"
     } else if (level === "12") {
       tileClassName = "tile12";
       imgClassName = "img";
+      textClassName = "card-text-12"
     } else {
       tileClassName = "tile16";
       imgClassName = "img";
+      textClassName = "card-text-16"
     }
     for (let i = 0; i < level; i++) {
       // create a new div
-      console.log(i)
+
       const newDiv = document.createElement("div");
+      const cardImg = document.createElement("IMG");
+      cardImg.setAttribute("src", colorArray[i]);
+      cardImg.classList.add(imgClassName);
+      newDiv.classList.add("tile");
+      newDiv.classList.add(tileClassName);
+      const frontDiv = document.createElement("p");
+      frontDiv.innerHTML = "flip me to know my true colors";
+      frontDiv.classList.add("back-face");
+      frontDiv.classList.add("card-text");
+      frontDiv.classList.add(textClassName);
+      cardImg.classList.add("front-face");
+      newDiv.append(frontDiv);
+      newDiv.append(cardImg);
+      console.log(newDiv);
 
-      var x = document.createElement("IMG");
-      x.setAttribute("src", colorArray[i]);
-      x.classList.add(imgClassName)
-      // x.setAttribute("width", "70%");
-      // x.setAttribute("height", "100%");
-      newDiv.append(x);
-      newDiv.classList.add("tile")
-      newDiv.classList.add(tileClassName)
-      // give it a class attribute for the value we are looping over
-      //newDiv.classList.add(color);
-
-      // call a function handleCardClick when a div is clicked on
       newDiv.addEventListener("click", handleCardClick);
 
       // append the div to the element with an id of game
