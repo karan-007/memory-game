@@ -37,21 +37,12 @@ function myFunction() {
       "./gifs/12.gif"
     ];
 
-    // here is a helper function to shuffle an array
-    // it returns the same array with values shuffled
-    // it is based on an algorithm called Fisher Yates if you want ot research more
     function shuffle(array) {
       let counter = array.length;
 
-      // While there are elements in the array
       while (counter > 0) {
-        // Pick a random index
         let index = Math.floor(Math.random() * counter);
-
-        // Decrease counter by 1
         counter--;
-
-        // And swap the last element with it
         let temp = array[counter];
         array[counter] = array[index];
         array[index] = temp;
@@ -75,20 +66,15 @@ function myFunction() {
         textClassName = "card-text-24"
       } else if (level === "8") {
         tileClassName = "tile8";
-        // imgClassName = "img";
         textClassName = "card-text-8"
       } else if (level === "12") {
         tileClassName = "tile12";
-        // imgClassName = "img";
         textClassName = "card-text-12"
       } else {
         tileClassName = "tile16";
-        // imgClassName = "img";
         textClassName = "card-text-16"
       }
       for (let i = 0; i < level; i++) {
-        // create a new div
-
         const newDiv = document.createElement("div");
         const cardImg = document.createElement("IMG");
         cardImg.setAttribute("src", colorArray[i]);
@@ -97,7 +83,7 @@ function myFunction() {
         newDiv.classList.add(tileClassName);
         newDiv.setAttribute("imgValue", colorArray[i]);
         const frontDiv = document.createElement("p");
-        frontDiv.innerHTML = "flip me to know my true colors";
+        frontDiv.innerHTML = "Click me to know my true colors";
         frontDiv.classList.add("back-face");
         frontDiv.classList.add("card-text");
         frontDiv.classList.add(textClassName);
@@ -106,14 +92,10 @@ function myFunction() {
         newDiv.append(cardImg);
 
         newDiv.addEventListener("click", handleCardClick);
-
-        // append the div to the element with an id of game
         gameContainer.append(newDiv);
       }
     }
 
-
-    // TODO: Implement this function!
     function handleCardClick(event) {
 
       if (totalCardsMatched === 0 && timerOn === false) {
@@ -165,7 +147,6 @@ function myFunction() {
         }
 
       }
-      // console.log("you clicked", event.target.parentElement);
     }
 
     function storeDataInLocal() {
@@ -204,7 +185,6 @@ function myFunction() {
         return false;
       }
     }
-    // when the DOM loads
     createDivsForColors(shuffledColors, level);
   }
   function getDataFromLocal() {
