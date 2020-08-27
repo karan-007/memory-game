@@ -17,8 +17,6 @@ function myFunction() {
   getDataFromLocal();
 
   if (name === "" || level === "") {
-    console.log(document.getElementById("reload"));
-
     document.getElementById("reload").classList.add("error");
     document.getElementById("anchor").setAttribute("href", "#reload");
   } else {
@@ -144,6 +142,11 @@ function myFunction() {
               console.log("done");
               clearInterval(timer);
               storeDataInLocal();
+              let score = document.getElementById("timer").innerHTML;
+              setTimeout(function () {
+                if (alert('Good Game, Press ok to play again. Your score is ' + score)) { }
+                else window.location.reload();
+              }, 1000)
             }
             cardNo = 0;
           } else {
