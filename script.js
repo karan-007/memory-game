@@ -3,9 +3,17 @@ function myFunction() {
   const gameDiv = document.getElementById("start-game");
   const name = document.getElementById("name").value;
   const level = document.getElementById("select").value;
+  document.getElementById("game-level").innerHTML = level;
+  document.getElementById("score-name").innerHTML = name;
+
   let cardNo = 0;
+  let timer = false;
   let firstCardClass = "";
   let secondCardClass = "";
+  let totalCardsMatched = 0;
+  var totalSeconds = 0;
+  var myVar;
+
   if (name === "" || level === "") {
     console.log("x")
   }
@@ -103,6 +111,11 @@ function myFunction() {
 
   // TODO: Implement this function!
   function handleCardClick(event) {
+
+    if (totalCardsMatched === 0 && timer === false) {
+      timer = true;
+      myVar = setInterval(setTime, 1000);
+    }
     if (cardNo < 2) {
       if (cardNo === 0) {
         console.log("flip");
@@ -118,7 +131,13 @@ function myFunction() {
           console.log("yay");
           firstCardClass.classList.add("done");
           secondCardClass.classList.add("done");
-          console.log(firstCardClass.classList);
+          totalCardsMatched += 2;
+          console.log(totalCardsMatched);
+          console.log(level);
+          if (totalCardsMatched === parseInt(level)) {
+            console.log("done");
+            clearInterval(myVar);
+          }
           cardNo = 0;
         } else {
           console.log("no");
@@ -139,8 +158,12 @@ function myFunction() {
     // console.log("you clicked", event.target.parentElement);
   }
 
+  function setTime() {
+    ++totalSeconds;
+    document.getElementById("timer").innerHTML = totalSeconds;
+  }
+
   function compareCards(first, second) {
-    console.log(first, second);
     if (first === second) {
       return true;
     } else {
