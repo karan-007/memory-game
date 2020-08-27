@@ -1,8 +1,15 @@
 function myFunction() {
   const gameContainer = document.getElementById("game");
+  const gameDiv = document.getElementById("start-game");
   const name = document.getElementById("name").value;
   const level = document.getElementById("select").value;
-
+  let cardNo = 0;
+  let firstCardClass = "";
+  let secondCardClass = "";
+  if (name === "" || level === "") {
+    console.log("x")
+  }
+  gameDiv.classList.add("show-game-div");
   const COLORS = [
     "./gifs/1.gif",
     "./gifs/2.gif",
@@ -53,19 +60,18 @@ function myFunction() {
   function createDivsForColors(colorArray, level) {
     if (level === "24") {
       tileClassName = "tile24";
-      imgClassName = "img24";
       textClassName = "card-text-24"
     } else if (level === "8") {
       tileClassName = "tile8";
-      imgClassName = "img";
+      // imgClassName = "img";
       textClassName = "card-text-8"
     } else if (level === "12") {
       tileClassName = "tile12";
-      imgClassName = "img";
+      // imgClassName = "img";
       textClassName = "card-text-12"
     } else {
       tileClassName = "tile16";
-      imgClassName = "img";
+      // imgClassName = "img";
       textClassName = "card-text-16"
     }
     for (let i = 0; i < level; i++) {
@@ -74,9 +80,10 @@ function myFunction() {
       const newDiv = document.createElement("div");
       const cardImg = document.createElement("IMG");
       cardImg.setAttribute("src", colorArray[i]);
-      cardImg.classList.add(imgClassName);
+      cardImg.classList.add("img");
       newDiv.classList.add("tile");
       newDiv.classList.add(tileClassName);
+      newDiv.setAttribute("imgValue", colorArray[i]);
       const frontDiv = document.createElement("p");
       frontDiv.innerHTML = "flip me to know my true colors";
       frontDiv.classList.add("back-face");
@@ -85,7 +92,6 @@ function myFunction() {
       cardImg.classList.add("front-face");
       newDiv.append(frontDiv);
       newDiv.append(cardImg);
-      console.log(newDiv);
 
       newDiv.addEventListener("click", handleCardClick);
 
@@ -97,10 +103,50 @@ function myFunction() {
 
   // TODO: Implement this function!
   function handleCardClick(event) {
-    // you can use event.target to see which element was clicked
-    console.log("you clicked", event.target);
+    if (cardNo < 2) {
+      if (cardNo === 0) {
+        console.log("flip");
+        this.classList.add("flip");
+        firstCardClass = this;
+        cardNo += 1;
+      } else {
+        console.log("flip");
+        this.classList.add("flip");
+        secondCardClass = this;
+        cardNo += 1;
+        if (compareCards(firstCardClass.attributes.imgvalue.nodeValue, secondCardClass.attributes.imgValue.nodeValue)) {
+          console.log("yay");
+          firstCardClass.classList.add("done");
+          secondCardClass.classList.add("done");
+          console.log(firstCardClass.classList);
+          cardNo = 0;
+        } else {
+          console.log("no");
+          setTimeout(function () {
+            console.log("noflip");
+            if (!firstCardClass.classList.contains("done")) {
+              firstCardClass.classList.remove("flip");
+            }
+            if (!secondCardClass.classList.contains("done")) {
+              secondCardClass.classList.remove("flip");
+            }
+            cardNo = 0;
+          }, 1000);
+        }
+      }
+
+    }
+    // console.log("you clicked", event.target.parentElement);
   }
 
+  function compareCards(first, second) {
+    console.log(first, second);
+    if (first === second) {
+      return true;
+    } else {
+      return false;
+    }
+  }
   // when the DOM loads
   createDivsForColors(shuffledColors, level);
 }
