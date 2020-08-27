@@ -37,7 +37,7 @@
               </select>
             </div>
             <button onclick="myFunction()" type="submit" class="btn btn-submit">
-              <a href="#start-game"> Start Game! </a>
+              <a id="anchor"> Start Game! </a>
             </button>
           </form>
         </div>
@@ -74,6 +74,11 @@
         <div>
           <p class="score-text-head">High-Score:</p>
           <div class="row">
+            <div class="col-sm high-score-head">Player Name</div>
+            <div class="col-sm high-score-head">Level</div>
+            <div class="col-sm high-score-head">Time Taken (secs)</div>
+          </div>
+          <div class="row">
             <div class="col-sm high-score" id="name-8"></div>
             <div class="col-sm high-score" id="level-8"></div>
             <div class="col-sm high-score" id="score-8"></div>
@@ -94,6 +99,14 @@
             <div class="col-sm high-score" id="score-24"></div>
           </div>
         </div>
+      </div>
+    </div>
+    <div id="reload" class="error-div">
+      <div class="reload-div">
+        <p class="reload-text">Please provide all the details asked</p>
+        <button onClick="window.location.reload()" class="reload-button">
+          Try Again!
+        </button>
       </div>
     </div>
     <script src="./script.js"></script>
