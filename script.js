@@ -22,6 +22,7 @@ function myFunction() {
   } else {
     document.getElementById("anchor").setAttribute("href", "#start-game");
     gameDiv.classList.add("show-game-div");
+    document.getElementById("game-intro").classList.add("hide-intro");
     const COLORS = [
       "./gifs/1.gif",
       "./gifs/2.gif",

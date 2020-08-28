@@ -12,6 +12,9 @@ body {
   align-items: center;
   text-align: center;
 }
+.hide-intro {
+  display: none;
+}
 .intro-heading {
   padding-top: 50px;
   margin: 0 auto;
