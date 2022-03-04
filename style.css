@@ -1,7 +1,203 @@
- #game div {
-  border: 1px solid black;
-  width: 15%;
-  height: 200px;
-  margin: 10px;
-  display: inline-block;
-} 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+* {
+  font-size: 18px;
+}
+.intro {
+  height: 100vh;
+  background-color: #79c2ac;
+  align-items: center;
+  text-align: center;
+}
+.hide-intro {
+  display: none;
+}
+.intro-heading {
+  padding-top: 50px;
+  margin: 0 auto;
+
+  color: #e27d5f;
+  font-size: 4em;
+  font-weight: bolder;
+}
+form {
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 5%;
+}
+.name-label,
+.level-label {
+  font-weight: bold;
+  font-size: 1.5em;
+}
+.btn {
+  width: 15em;
+  margin-top: 5%;
+  background-color: #fff;
+}
+#anchor {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.game-div {
+  height: 100vh;
+  display: none;
+  align-items: center;
+  background-color: #023870;
+}
+
+.show-game-div {
+  display: flex;
+}
+
+#game {
+  min-width: 70%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #54e090;
+  justify-content: center;
+  perspective: 1000px;
+}
+.tile {
+  margin: 8px;
+  position: relative;
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  border-radius: 7px;
+  cursor: pointer;
+}
+.tile24 {
+  width: 20%;
+  max-height: 14%;
+}
+.tile8 {
+  width: 45%;
+  max-height: 20%;
+}
+.tile12 {
+  width: 30%;
+  max-height: 20%;
+}
+.tile16 {
+  width: 20%;
+  max-height: 20%;
+}
+.img {
+  width: 100%;
+  height: 100%;
+}
+.card-text {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+  text-align: center;
+}
+.card-text-8 {
+  font-size: 1.5em;
+}
+.card-text-12 {
+  font-size: 1.2em;
+}
+.card-text-12 {
+  font-size: 1em;
+}
+.card-text-24 {
+  font-size: 0.8em;
+}
+
+.tile:active {
+  transform: scale(0.95);
+  transition: transform 0.5s;
+}
+
+.tile.flip {
+  transform: rotateY(180deg);
+}
+
+.front-face,
+.back-face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 5px;
+  background: #023870;
+  backface-visibility: hidden;
+}
+
+.front-face {
+  transform: rotateY(180deg);
+}
+
+.score-board {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.score-board div {
+  text-align: center;
+  width: 100%;
+}
+.score-text-head {
+  font-size: 2em;
+  color: #54e090;
+  font-weight: bold;
+}
+.score-value {
+  color: #fff;
+  font-size: 1.2em;
+}
+.high-score {
+  color: #fff;
+  font-size: 0.8em;
+}
+.high-score-head {
+  color: #54e090;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+#reload {
+  width: 100%;
+  height: 100vh;
+}
+.error-div {
+  display: none;
+}
+.error {
+  display: block;
+}
+.reload-div {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+.reload-text {
+  color: #fff;
+  font-size: 2em;
+}
+.reload-button {
+  padding: 0;
+  border: none;
+  background: none;
+  background-color: #54e090;
+  width: 15em;
+  height: 3em;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 10px;
+}

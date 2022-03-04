@@ -4,10 +4,120 @@
     <meta charset="UTF-8" />
     <title>Memory Game!</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
   </head>
   <body>
-    <h1>Memory Game!</h1>
-    <div id="game">
-    <script src="script.js"></script>
+    <div class="intro" id="game-intro">
+      <div class="container">
+        <div class="intro-heading">Memory Game!</div>
+        <div class="intro-input-div">
+          <form>
+            <div class="form-group">
+              <label class="name-label">Give yourSelf a Cool Name</label>
+              <input
+                type="name"
+                class="form-control"
+                id="name"
+                placeholder="your cool name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="level-label">Select Level</label>
+              <select class="form-control level-select" id="select">
+                <option value="" level="" selected disabled hidden>
+                  Choose here
+                </option>
+                <option value="8" level="Easy">Easy</option>
+                <option value="12" level="Medium">Medium</option>
+                <option value="16" level="Hard">Hard</option>
+                <option value="24" levle="Pro">Pro</option>
+              </select>
+            </div>
+            <a
+              id="anchor"
+              onclick="myFunction()"
+              type="submit"
+              class="btn btn-submit"
+            >
+              Start Game!
+            </a>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="game-div" id="start-game">
+      <div id="game"></div>
+      <div class="score-board">
+        <div>
+          <p class="score-text-head">WELCOME</p>
+          <p id="score-name" class="score-value"></p>
+        </div>
+        <div>
+          <p class="score-text-head">Level:</p>
+          <p id="game-level" class="score-value"></p>
+        </div>
+        <div>
+          <p class="score-text-head">Timer:</p>
+          <p id="timer" class="score-value"></p>
+        </div>
+        <div>
+          <p class="score-text-head">High-Score:</p>
+          <div class="row">
+            <div class="col-sm high-score-head">Player Name</div>
+            <div class="col-sm high-score-head">Level</div>
+            <div class="col-sm high-score-head">Time Taken (secs)</div>
+          </div>
+          <div class="row">
+            <div class="col-sm high-score" id="name-8"></div>
+            <div class="col-sm high-score" id="level-8"></div>
+            <div class="col-sm high-score" id="score-8"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm high-score" id="name-12"></div>
+            <div class="col-sm high-score" id="level-12"></div>
+            <div class="col-sm high-score" id="score-12"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm high-score" id="name-16"></div>
+            <div class="col-sm high-score" id="level-16"></div>
+            <div class="col-sm high-score" id="score-16"></div>
+          </div>
+          <div class="row">
+            <div class="col-sm high-score" id="name-24"></div>
+            <div class="col-sm high-score" id="level-24"></div>
+            <div class="col-sm high-score" id="score-24"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="reload" class="error-div">
+      <div class="reload-div">
+        <p class="reload-text">Please provide all the details asked.</p>
+        <button onClick="window.location.reload()" class="reload-button">
+          Try Again!
+        </button>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
